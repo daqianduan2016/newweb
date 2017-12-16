@@ -1,0 +1,1 @@
+mongod --dbpath d:\MongoDB\data --logpath d:\MongoDB\log\mongo.log --journal

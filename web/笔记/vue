@@ -1,0 +1,27 @@
+vue组件异步加载的方法????
+const Acomponent=resolve=>require(['@/components/Acomponent'], resolve)
+
+
+父子组件通信
+<div id="father" @listenChild="handle">father</div>
+handle(parma) {
+    console.log(parma)
+}父组件提供一个改值的函数，并定义一个自定义事件
+<div id="child" @click="handleClick">child</div>
+handleClick() {
+    this.$emit('listenChild', parma)
+}子组件通过click之类的事件触发父组件的事件，这里this.$emit触发的是父组件定义的事件
+
+
+this.$nextTick(() => {
+    this.$refs.inout.$el.focus();
+})
+
+组件的异步加载
+const Acomponent=resolve=>require(['@/components/Acomponent'], resolve)
+
+箭头函数的好处
+var that=this
+api.getNews().then(function(){
+    that.a=1;//这里如果用箭头函数this就可以不考虑this的指向问题了
+})

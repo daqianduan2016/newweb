@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="lib/sea.js"></script>
+    <script>
+        // seajs 的简单配置
+        seajs.config({
+            base: "./js",
+            alias: {
+                "Q": "../lib/qunee-module.js"
+            }
+        });
+        // 加载入口模块
+        seajs.use("main");
+    </script>
+</head>
+<body>
+<div style="width: 800px; height: 500px; margin: auto; " id="canvas" />
+</body>
+</html>
