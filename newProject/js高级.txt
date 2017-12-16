@@ -1,0 +1,46 @@
+isPrototypeOf
+function A(){
+
+}
+var a = new A();
+以下3个都为true，可以理解为，isPrototypeOf可用于判断对象是否是某个类或其子类的实例
+对象的prototype是否在其ptoto链上
+//通过A创建一个对象a，所以a的__proto__是指向A.prototype的
+console.log(A.prototype.isPrototypeOf(a));
+//A.__proto__是指向Object.prototype的
+console.log(Object.prototype.isPrototypeOf(A));
+//由于A.prototype的__proto__是指向Object.prototype的，所以a也就含有Object.prototype咯
+console.log(Object.prototype.isPrototypeOf(a));
+
+
+getPrototypeOf
+function Fn(){
+
+}
+var fn = new Fn();
+//通过getPrototypeOf静态方法，获得对象fn的prototype
+var proto = Object.getPrototypeOf(fn);
+getPrototypeOf，的确是返回对象__proto__指向的prototype。
+
+hasOwnProperty
+hasOwnProperty()方法可以检测一个属性是存在于实例中，还是存在于原型中。
+
+
+判断变量类型最准确的方法
+Object.prototype.toString.call(a)
+
+求数组中的最大值
+Math.min.apply('',[1,2,3,4])
+1-10随机数
+Math.floor(Math.random() * 10 + 1)
+
+
+forEach()
+map()  需return
+some() 是否存在
+every() 是否每个都符合
+filter() 过滤
+
+slice()截取数组中的部分元素，不会修改原数组
+splice()插入，删除，会修改原数组
+concat()数组拼接

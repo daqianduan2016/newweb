@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var studentsData =
+            [{ name: "mike", age: 17 },
+            { name: "loren", age: 16 },
+            { name: "frank", age: 18 }];
+        function createCompareFunction(fieldName) {
+            return function (object1, object2) {
+                // var value1 = object1[fieldName];
+                // var value2 = object2[fieldName];
+                // if (value1 < value2) {
+                //     return -1;
+                // } else if (value1 == value2) {
+                //     return 0;
+                // } else {
+                //     return 1;
+                // }
+                return object1[fieldName]>object2[fieldName];
+            };
+        }
+
+        //按照name字段进行排序
+        studentsData.sort(createCompareFunction("name"));
+
+        //按照age字段进行排序
+        studentsData.sort(createCompareFunction("age"));    
+    </script>
+</body>
+
+</html>

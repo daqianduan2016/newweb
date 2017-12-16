@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div{
+        height:100px;width:100px;display:block;background:#f00;text-align:center;
+
+    }
+    .div2{background: #3e2}
+    </style>
+</head>
+<body>
+    <div></div>
+    <div class="div2"></div>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script>
+    $.fn.rotate=function(options){
+    
+            var defaults={//默认参数
+    
+                'rotate':'360',
+                'transition':'0.4s'
+            };
+    
+            var settings=$.extend({},defaults,options);//合并参数    ｛｝防覆盖
+    
+            return this.css({
+                'transition':settings.transition,
+                'transform':'rotate('+settings.rotate+'deg)'
+            });
+    
+    }
+    $.fn.autoRotate=function(opt){
+        return this.hover(
+            function(){$(this).rotate(opt)},
+            function(){$(this.rotate({transition:'0s',rotate:0}))}
+    )
+    }
+    
+    
+    
+    
+       $(function(){
+
+            $('div').hover(function(){
+    
+               $(this).rotate({
+                 transition:'0.4s',
+                 rotate:360
+    
+    
+               });
+    
+            },function(){
+    
+              $(this).rotate({
+                transition:'0s',
+                  rotate:0
+              });
+    
+            });
+            $('.div2').off().autoRotate();
+          
+       });
+    
+    
+        </script>
+</body>
+</html>

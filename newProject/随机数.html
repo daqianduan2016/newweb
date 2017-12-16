@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+            var objApp = {
+                //生成随机数
+                 selectFrom: function(a, b) {
+                     return Math.floor(Math.random() * (b-a+1) +a );
+                 },
+                // 功能实现
+                 play: function() {
+                     var len = 0,n,obj = {}, arr =[];
+                     while (len < 52){   
+                         n = this.selectFrom(1, 52);
+                         if (!obj.hasOwnProperty(n)){
+                      //此处不用数组而用对象，好处：减少一次循环嵌套 不然得 while (obj.indexOf(n) != -1) 了，再者，js也讲究一切皆对象，这一串好像是谁说的来着。。。。
+                             obj[n] = n;
+                             arr[arr.length] = n;
+                             len++;
+                         }
+                     }
+                     for(var i=0; i<52; i++){
+                        document.write( parseInt(arr[i], 10)," " );
+                        if(i%13 === 0 && i!==0) document.write("<br/>")
+                     }
+                 }
+             };
+             objApp.play();
+             */
+    var a0 = [],
+        a1 = [],
+        a2 = [],
+        a3 = [],
+        arr = [];
+    var list = [a0, a1, a2, a3]
+    for (var i = 0; i < 52; i++) {
+        arr[i] = i + 1;
+    }
+    for (var i = 52; i > 0; i--) { //这块必须这样 很巧妙：i等于多少，恰好arr的length是多少。
+        var m = i % 4; //为了获取每次的0,1,2,3
+        var num = arr.splice(Math.floor(Math.random() * i), 1); //将[1,i] i个数随机删除一个数
+        list[m].push(num[0])
+        //eval("a"+m).push(num[0]); //将删除的那个数付给a0,a1,a2,a3
+        //eval("a"+m)  将字符串转换成js程序 是不是终于发现了eval()用武之处，不管你是不是，反正我是~· 又学会了一招，哈哈~
+    }
+    //console.log(a0);console.log(a1);console.log(a2);console.log(a3);
+    // for(var i=0; i<5; i++){   
+    //    setTimeout(function(){
+    //      console.log(i);
+    //    },100)
+    // }
+    var a = 2;
+
+    function fn1() {
+        this.a = 1;
+    }
+    fn1.prototype.say = function () {
+        setTimeout(() => {
+            console.log(this.a);
+        }, 100)
+    }
+    new fn1().say();
+
+    function fn2() {
+        this.a = 1;
+    }
+    fn2.prototype.say = function () {
+        setTimeout(function () {
+            console.log(this.a);
+        }, 100)
+    }
+    new fn2().say();
+
+    function fn3() {
+        this.a = 1;
+    }
+    fn3.prototype.say = function () {
+        for (var i = 0; i < 5; i++) {
+            ((i) => {
+                setTimeout(() => {
+                    console.log(i);
+                }, 100)
+            })(i)
+        }
+    }
+    new fn3().say();
+</script>
+
+</html>

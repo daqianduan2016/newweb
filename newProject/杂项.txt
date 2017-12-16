@@ -1,0 +1,102 @@
+自动雪碧图?????
+
+把 display 设置成 none 不会保留元素本该显示的空间，但是 visibility: hidden; 还会保留。
+
+判断一个jquery对象是否存在时，不能用if($("tr")){...},因为jq对象不是null或空，里面包含其它属性
+要用if($("tr").length > 0)
+
+ie9及以上自带document.getElementsByClassName
+document.getElementsByClassName = function(className){
+    var el = [];
+    _el = document.getElementsByTagName('*');//获取所有元素
+    for(var i = 0;i < _el.length; i++){//遍历元素集合
+        if(_el[i].className == className){//获取相同类名的元素
+            el[el.length] = _el[i];
+        }
+    }
+    return el;
+}
+
+function removeClass(elm,removeClassName) {
+    var classNames = elm.className.split(/\s+/);//首先取到类名字符串并拆分成数组
+    var pos = -1, i, len;
+    for (i = 0, len = classNames.length; i < len; i++){//找到要删的类名
+        if(classNames[i] == removeClassName) {
+            pos = i;
+            break;
+        }
+    }
+    if(pos == -1){
+        throw Error("没有这个类名");
+    }
+    classNames.splice(i,1);//删除类名
+    elm.className = classNames.join(" ");//把剩下的类名拼成字符串重新设置
+}
+
+浮点计算会出现精度偏差,比如0.1+0.2
+需要toFixed(n)调整
+
+jq的.end()是返回上一个作用域
+$(obj).siblings().removeClass("currentNum").end().addClass("currentNum");
+
+ECMAScript中有 5种简单数据类型（也称为基本数据类型）：Undefined、Null、Boolean、Number 和String。还有1种复杂数据类型——Object，Object 本质上是由一组无序的名值对组成的
+还有一个是function
+
+如果定义的变量准备在将来用于保存对象，那么最好将该变量初始化为 null 而不是其他值。这样 一来，只要直接检查 null 值就可以知道相应的变量是否已经保存了一个对象的引用
+
+typeof null返回的是Object
+
+现代 Web 应用程序一般都把全部 JavaScript引 用放在<body>元素中页面内容的后面，即主要内容后面，</body>标签前面。相对于defer属性，这是最佳选择
+
+外部引用js代码的好处是1-可缓存，如果有两个 页面都使用同一个文件，那么这个文件只需下载一次。因此，终结果就是能够加快页面加载的 速度。2-可维护性，也能够在不触及 HTML标记的情况下， 集中精力编辑 JavaScript代码
+
+typeof  instanceof
+确定一个值是哪种基本类型可以使用 typeof 操作符，而确定一个值是哪种引用类型可以使用 instanceof 操作符。 
+
+value instanceof Array（ES3版的）和Array.isArray(value) [ES5版的]都可以确定一个一个值到底是不是数组
+
+
+
+
+找出数组中最大的一个数
+var values = [1, 2, 3, 4, 5, 6, 7, 8];
+alert(Math.max.apply(Math,values))//8
+有了es6的扩展运算符之后也可以这样：Math.max(...values)
+
+Date()对象的getMonth()需要+1才是当前月份
+
+mouseover和mouseout事件在鼠标经过子元素时也会触发
+想要不触发用mouseenter和mouseleave
+
+
+文本超过宽度显示省略号
+.text1 {
+    width:200px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    -o-text-overflow:ellipsis;
+    -webkit-text-overflow:ellipsis;
+    -moz-text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+js解码
+unescape(var string);
+decodeURIComponent(var string);
+decodeURI(var string);
+
+如unescape('%2c')会转化为,（逗号）,从cookie取数据时会出现这种情况 
+
+
+判断变量类型最准确的方法
+Object.prototype.toString.call(a)
+
+forEach()
+map()  需return
+some() 是否存在
+every() 是否每个都符合
+filter() 过滤
+
+slice()截取数组中的部分元素，不会修改原数组
+splice()插入，删除，会修改原数组
+concat()数组拼接

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex改变元素排列方向flex-direction</title>
+    <style>
+        div{
+            text-align: center;
+        }
+        .container{
+            /*设置最外层包裹元素为flew弹性布局*/
+            display: flex;
+            /*flex-direction:row-reverse;*/
+            flex-direction:row;
+            border:1px solid blue
+        }
+        .container .left{
+            background-color: beige;
+            flex: 1;
+            height:100px;
+        }
+        .container .cont{
+            background-color: aqua;
+            flex: 1;
+            height:100px;
+        }
+        /*也可以对不同元素进行flex布局 剩下的面积同等分配   剩下的面积平均分配4等份*/
+        .container .right{
+           background-color: aquamarine;
+            flex: 1;
+            height:100px;
+        }
+
+        .container_two{
+              display: flex;
+              flex-direction:column;
+              /*flex-direction:column-reverse;*/
+              margin-top: 30px;;
+          }
+        .container_two .left{
+            background-color: aquamarine;
+            flex: 1;
+            height:100px;
+        }
+        .container_two .cont{
+            background-color: beige;
+            flex: 1;
+            height:100px;
+        }
+        .container_two .right{
+            background-color: darkorange;
+            flex: 1;
+            height:100px;
+        }
+
+        .container_Three{
+            display: flex;
+            flex-direction:row-reverse;
+            margin-top: 30px;;
+        }
+        .container_Three .left{
+            background-color: aquamarine;
+            flex: 1;
+            height:100px;
+        }
+        .container_Three .cont{
+            background-color: beige;
+            flex: 1;
+            height:100px;
+        }
+        .container_Three .right{
+            background-color: darkorange;
+            flex: 1;
+            height:100px;
+        }
+    </style>
+</head>
+<body>
+<p> flex-direction:row默认;</p>
+<div class="container">
+    <div class="left">
+        <h1>1左边内容 width：固定</h1>
+    </div>
+    <div class="cont">
+        <h1>2中间内容 flex：1</h1>
+
+    </div>
+    <div class="right">
+        <h1>3右边内容 flex：3</h1>
+    </div>
+</div>
+
+<p> flex-direction:column;</p>
+<div class="container_two">
+    <div class="left">
+        <h1>1左边内容 width：固定</h1>
+    </div>
+    <div class="cont">
+        <h1>2中间内容 flex：1</h1>
+
+    </div>
+    <div class="right">
+        <h1>3右边内容 flex：3</h1>
+    </div>
+</div>
+
+<p> flex-direction:row-reverse和flex-direction:column-reverse;</p>
+<div class="container_Three">
+    <div class="left">
+        <h1>1左边内容 width：固定</h1>
+    </div>
+    <div class="cont">
+        <h1>2中间内容 flex：1</h1>
+
+    </div>
+    <div class="right">
+        <h1>3右边内容 flex：3</h1>
+    </div>
+</div>
+
+</body>
+</html>

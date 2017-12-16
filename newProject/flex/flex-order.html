@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex布局之order更改元素显示顺序</title>
+    <style>
+        div{
+            text-align: center;
+        }
+        .container{
+            /*设置最外层包裹元素为flew弹性布局*/
+            display: flex;
+            height: 200px;
+        }
+        .container .left{
+            /*flex order:3排在第三位*/
+            order:3;
+            border:1px solid red;
+            width:200px;
+            background-color: aqua;
+        }
+        .container .cont{
+            /*flex order:1排在第一位*/
+            order:1;
+            border:1px solid red;
+            flex: 1;
+            background-color: chartreuse;
+        }
+        /*也可以对不同元素进行flex布局 剩下的面积同等分配*/
+        .container .right{
+            /*flex order:2排在第二位*/
+            order:2;
+            border:1px solid red;
+            width:200px;
+           background-color: beige;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left">
+        <h1>1左边内容</h1>
+    </div>
+    <div class="cont">
+        <h1>2中间内容</h1>
+    </div>
+    <div class="right">
+        <h1>3右边内容</h1>
+    </div>
+</div>
+
+</body>
+</html>

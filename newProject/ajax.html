@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    
+</body>
+<script>
+["www.baidu.com","weibo.com","http://jquery.com/jquery-wp-content/themes/jquery/images/gauze.png","1231dfdfb.com"].forEach(function(elem){
+    $.ajax({
+       url: elem,
+       type:"get",
+       dataType : "jsonp",
+       success:function(res){
+           newarr.push(elem);
+           console.log(1)
+       },
+       error: function(err){
+           console.log(2)
+      }
+    });
+ });  //无法实现
+</script>
+</html>

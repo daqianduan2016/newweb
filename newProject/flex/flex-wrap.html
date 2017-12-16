@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex-wrap控制换行方式</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            border:2px solid red;
+            flex-wrap: wrap;
+            width:900px;
+            height:300px;
+            float: left;
+        }
+        .container .a{
+            box-sizing: border-box;
+            width:250px;
+            background-color: beige;
+        }
+        .container .b{
+            box-sizing: border-box;
+            width:250px;
+            background-color: aqua;
+        }
+       .container .c{
+            box-sizing: border-box;
+            width:250px;
+            background-color: darkorange;
+        }
+
+        .container_{
+            display: flex;
+            flex-direction: row;;
+            border:2px solid red;
+            flex-wrap: nowrap;
+            width:500px;
+            height:300px;
+            float: left;
+            margin-left: 30px;;
+        }
+        .container_ .a{
+            box-sizing: border-box;
+            width:250px;
+            background-color: beige;
+        }
+        .container_ .b{
+            box-sizing: border-box;
+            width:250px;
+            background-color: aqua;
+        }
+        .container_ .c{
+            box-sizing: border-box;
+            width:250px;
+            background-color: darkorange;
+        }
+    </style>
+</head>
+<body>
+<p>默认是nowrap，设为wrap，当子元素的宽超过父元素时，会换行</p>
+<div class="container">
+    <div class="a">A</div>
+    <div class="b">B</div>
+    <div class="c">C</div>
+</div>
+
+<div class="container_">
+    <div class="a">A</div>
+    <div class="b">B</div>
+    <div class="c">C</div>
+</div>
+</body>
+</html>

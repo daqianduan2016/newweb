@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            //需要判断浏览器是否支持placeholder属性，检测到不支持时才会调用这代码。
+            if(!('placeholder' in document.createElement('input'))){
+                //获取文本框对象
+                var input = document.getElementById('z');
+                //获取占位符文本
+                var inputValue = input.placeholder;
+                input.onfocus = function(){
+                    if(this.value == inputValue){
+                        //重置输入框的值，以隐藏临时的占位符文本
+                        input.value = "";
+                    }
+                }
+                input.onblur = function(){
+                    if(this.value == ""){
+                        input.value = inputValue;
+                    }
+                }
+                //在onblur处理函数运行中添加占位符文本
+                input.onblur();
+            }
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <input type="text" placeholder="请输入...." id = "z">
+    </form>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>align-content指定行对齐方式</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .aa{
+            float: left;
+            margin-left: 15px;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            width:300px;
+            height:400px;
+            flex-wrap: wrap;
+            border:1px solid red;
+        }
+        .container div,
+        .align-content_flexStart div,
+        .align-content_flexEnd div,
+        .align-content_cen div{
+            width:100px;
+            height:100px;
+            text-align: center;
+        }
+        .container div:nth-child(3n+1),
+        .align-content_flexStart div:nth-child(3n+1),
+        .align-content_flexEnd div:nth-child(3n+1),
+        .align-content_cen div:nth-child(3n+1){
+             background-color: coral;
+         }
+        .container div:nth-child(3n+2),
+        .align-content_flexStart div:nth-child(3n+2)
+        ,.align-content_flexEnd div:nth-child(3n+2),
+        .align-content_cen div:nth-child(3n+2){
+            background-color: aquamarine;
+        }
+        .container div:nth-child(3n+3),
+        .align-content_flexStart div:nth-child(3n+3),
+        .align-content_flexEnd div:nth-child(3n+3),
+        .align-content_cen div:nth-child(3n+3){
+           background-color: bisque;
+        }
+        .align-content_flexStart{
+            display: flex;
+            flex-direction: row;
+            width:300px;
+            height:400px;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            border:1px solid red;
+        }
+        .align-content_flexEnd{
+            display: flex;
+            flex-direction: row;
+            width:300px;
+            height:400px;
+            flex-wrap: wrap;
+            align-content: flex-end;
+            border:1px solid red;
+        }
+        .align-content_cen{
+            display: flex;
+            flex-direction: row;
+            width:300px;
+            height:400px;
+            flex-wrap: wrap;
+            align-content: center;
+            border:1px solid red;
+            /*align-content: space-between;*/
+            /*align-content: space-around;*/
+        }
+    </style>
+</head>
+<body>
+<div class="aa">
+    <p>没有align-content属性</p>
+    <div class="container">
+        <div>示例A</div>
+        <div>示例B</div>
+        <div>示例C</div>
+        <div>示例D</div>
+        <div>示例F</div>
+        <div>示例G</div>
+        <div>示例H</div>
+        <div>示例J</div>
+        <div>示例K</div>
+    </div>
+</div>
+
+<div class="aa">
+    <p >align-content：flex-start</p>
+    <div class="align-content_flexStart">
+        <div>示例A</div>
+        <div>示例B</div>
+        <div>示例C</div>
+        <div>示例D</div>
+        <div>示例F</div>
+        <div>示例G</div>
+        <div>示例H</div>
+        <div>示例J</div>
+        <div>示例K</div>
+    </div>
+</div>
+
+<div class="aa">
+    <p >align-content：flex-end</p>
+    <div class="align-content_flexEnd">
+        <div>示例A</div>
+        <div>示例B</div>
+        <div>示例C</div>
+        <div>示例D</div>
+        <div>示例F</div>
+        <div>示例G</div>
+        <div>示例H</div>
+        <div>示例J</div>
+        <div>示例K</div>
+    </div>
+</div>
+
+<div class="aa">
+    <p >align-content：flex-end</p>
+    <div class="align-content_cen">
+        <div>示例A</div>
+        <div>示例B</div>
+        <div>示例C</div>
+        <div>示例D</div>
+        <div>示例F</div>
+        <div>示例G</div>
+        <div>示例H</div>
+        <div>示例J</div>
+        <div>示例K</div>
+    </div>
+</div>
+</body>
+</html>

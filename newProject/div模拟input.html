@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>div模拟select选择框</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <style>
+        ul,
+        li,
+        div,
+        span {
+            box-sizing: border-box;
+        }
+
+        .select-box ul,
+        .select-box li {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+            background: #fff;
+        }
+
+        .select-box {
+            width: 100%;
+            position: relative;
+            background: #fff;
+        }
+
+        #fisrt {
+            display: block;
+            line-height: 40px;
+            width: 100%;
+            height: 40px;
+            padding: 0 15px;
+            padding-right: 20px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            /*white-space: nowrap;*/
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        #fisrt.active {
+            border: 1px solid #F2C051;
+        }
+
+        #fisrt::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 18px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-top-color: #000;
+            background: #fff;
+        }
+
+        .custom-option-box {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-top-color: transparent;
+            z-index: 10000;
+        }
+
+        .custom-option-box li {
+            display: block;
+            line-height: 30px;
+            padding: 0 15px;
+            z-index: 10000;
+        }
+
+        .custom-option-box li:hover,
+        .custom-option-box li.active {
+            background: #F2C051;
+        }
+
+        .custom-option-box span {
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="custom-select-box">
+        <div class="select-box mui-inline" style="width: 220px;">
+            <span id="fisrt" data-show="0">1</span>
+            <ul class="custom-option-box">
+                <li class="active">
+                    <span>1</span>
+                </li>
+                <li>
+                    <span>2</span>
+                </li>
+                <li>
+                    <span>3</span>
+                </li>
+                <li>
+                    <span>4</span>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script>
+        (function () {
+            ready(function () {
+                var option_box = document.getElementsByClassName("custom-option-box")[0],
+                    select_box = document.getElementsByClassName("select-box")[0],
+                    width;
+                option_box.style.display = "none"; //初始ul隐藏  
+                width = select_box.offsetWidth; //select的宽度 默认 100%  
+                option_box.style.width = width + "px"; //初始ul宽度   
+
+                document.getElementById("fisrt").addEventListener("click", function () {
+                    var isShow = this.dataset.show;
+                    if (isShow == 0) {
+                        this.dataset.show = 1;
+                        this.classList.add("active");
+                        this.nextElementSibling.style.display = "block"; //找到ul.son_ul显示  
+                    } else {
+                        this.dataset.show = 0;
+                        this.classList.remove("active");
+                        this.nextElementSibling.style.display = "none"; //找到ul.son_ul显示  
+                    }
+                }, false);
+                var option = option_box.getElementsByTagName("li");
+                for (var i = 0; i < option.length; i++) {
+                    option[i].onclick = function () {
+                        var fisrt = this.parentNode.previousElementSibling;
+                        var siblings = getSiblings(this);
+                        fisrt.innerHTML = this.childNodes[0].innerText;
+                        fisrt.dataset.val = this.dataset.val;
+                        this.classList.add("active");
+                        for (var i = 0; i < siblings.length; i++) {
+                            siblings[i].classList.remove("active");
+                        }
+                        this.parentNode.style.display = "none";
+                        fisrt.dataset.show = 0;
+                        fisrt.classList.remove("active");
+                    }
+                }
+
+            });
+
+            function ready(fn) {
+                if (document.addEventListener) {        //标准浏览器
+                    document.addEventListener('DOMContentLoaded', function () {
+                        //注销时间，避免重复触发
+                        document.removeEventListener('DOMContentLoaded', arguments.callee, false);
+                        fn();        //运行函数
+                    }, false);
+                } else if (document.attachEvent) {        //IE浏览器
+                    document.attachEvent('onreadystatechange', function () {
+                        if (document.readyState == 'complete') {
+                            document.detachEvent('onreadystatechange', arguments.callee);
+                            fn();        //函数运行
+                        }
+                    });
+                }
+            }
+            function getSiblings(elm) {
+                var a = [];
+                var p = elm.parentNode.children;
+                for (var i = 0, pl = p.length; i < pl; i++) {
+                    if (p[i] !== elm) a.push(p[i]);
+                }
+                return a;
+            }
+        })();
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+复制远端代码到本地
+git clone https://github.com/daqianduan2016/newProject.git
+
+git config --global user.name “username”  设置username
+git config --global user.email "email"   设置email
+git config --global user.name 后面不加name，查看当前user.name
+git config --global user.email 后面不加email，查看当前user.email
+git config --list  查看所有配置项  
+
+git status 查看当前工作区或暂存区的状态
+
+git add demo1.html 把文件从工作区添加到暂存区
+git add . 点表示把全部文件提交到暂存区
+
+git reset HEAD demo1.html 从暂存区撤回工作区
+
+git commit -a -m "change one"  提交 -a/add -m/注释
+git commit 是提交到本地仓库
+
+对比
+git diff 工作区和暂存区的差异
+git diff --cached(--staged) 暂存区和版本区的差异
+git diff master 工作区和版本库的差异
+
+
+撤销
+git reset HEAD <file.name> 从暂存区撤销回工作区
+git checkout --<file.name> 撤销回到版本区的状态（会先从暂存区寻找，如果没有，还原至版本区的状态）
+git commit --amend 覆盖上次的提交
+
+删除
+git rm <file.name> 删除暂存区中的文件
+git rm -f <file.name> 工作区和暂存区都删除
+git rm --cached <file.name> 只删除暂存区
+
+恢复
+git chechout commit_id <file.name>  commit_id可以在log里看到
+git reset --hard commit_id  恢复至某个版本
+git reset --hard HEAD^  上个版本
+git reset --hard HEAD~<num>  往回至前num个版本
+git reflog  回到过去的一个版本后，如果又想回到刚才的版本，可以通过这个命令查看日志
+
+
+提交
+git remote 查看远端的名字
+git remote -v
+git push origin master 向远端提交
+
+拉取
+git fetch  拉取不合并，需手动合并
+    git diff mater origin/master
+    git merge origin/master
+git pull  拉取并自动合并
+
+
+fork 
+pull request
+
+git分支
+git branch
+git branch -d <branchName> 删除分支，未合并的分支不可删除
+git branch -D <branchName> 强制删除分支
+git branch --merged 查看已合并的分支
+git branch --no-merged 查看未合并的分支
+git brahch <branchName> 创建分支
+git checkout <branchName> 切换分支
+git checkout -b new1 创建分支并切换到此分支下
+
+git checkout master;git merge new1  把new1合并到master上
+
+打标签
+git tag
+git tag v1.0
+git push origin v1.0  提交一个版本
+
+git checkout
+    -b
+git merge
+
+
+
+添加新的小伙伴按钮找不到
+
+git reset --hard  还原至修改前
+
+
+

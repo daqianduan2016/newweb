@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>align-items子元素垂直对齐方向</title>
+    <style>
+        /*align-items: flex-start;*/
+        .container{
+            border:2px solid red;
+            display: flex;
+            flex-direction: row;
+            width:600px;
+            align-items: flex-start;
+        }
+        .container .a{
+            width:180px;
+            background-color: beige;
+            font-size: 12px;;
+        }
+        .container .b{
+            width:180px;
+           background-color: aqua;
+            font-size: 24px;;
+        }
+        .container .c{
+            width:180px;
+           background-color: coral;
+            font-size: 36px;;
+        }
+        /*align-items: flex-end;*/
+        .container_flex-end{
+            border:2px solid red;
+            display: flex;
+            flex-direction: row;
+            width:600px;
+            align-items: flex-end;
+        }
+        .container_flex-end .a{
+            width:180px;
+            background-color: beige;
+            font-size: 12px;;
+        }
+        .container_flex-end .b{
+            width:180px;
+            background-color: aqua;
+            font-size: 24px;;
+        }
+        .container_flex-end .c{
+            width:180px;
+            background-color: coral;
+            font-size: 36px;;
+        }
+        /*align-items: center;*/
+        .container_center{
+            border:2px solid red;
+            display: flex;
+            flex-direction: row;
+            width:600px;
+            align-items: center;
+        }
+        .container_center .a{
+            width:180px;
+            background-color: beige;
+            font-size: 12px;;
+        }
+        .container_center .b{
+            width:180px;
+            background-color: aqua;
+            font-size: 24px;;
+        }
+        .container_center .c{
+            width:180px;
+            background-color: coral;
+            font-size: 36px;;
+        }
+
+        /*align-items: center;*/
+        .container_baseline{
+            border:2px solid red;
+            display: flex;
+            flex-direction: row;
+            width:600px;
+            align-items: baseline;
+        }
+        .container_baseline .a{
+            width:180px;
+            background-color: beige;
+            font-size: 12px;;
+        }
+        .container_baseline .b{
+            width:180px;
+            background-color: aqua;
+            font-size: 24px;;
+        }
+        .container_baseline .c{
+            width:180px;
+            background-color: coral;
+            font-size: 36px;;
+        }
+
+        /*align-items: stretch;*/
+        .container_stretch{
+            border:2px solid red;
+            display: flex;
+            flex-direction: row;
+            width:600px;
+            align-items: stretch;
+        }
+        .container_stretch .a{
+            width:180px;
+            background-color: beige;
+            font-size: 12px;;
+        }
+        .container_stretch .b{
+            width:180px;
+            background-color: aqua;
+            font-size: 24px;;
+        }
+        .container_stretch .c{
+            width:180px;
+            background-color: coral;
+            font-size: 36px;;
+        }
+
+        /*align-items: stretch;*/
+        .container_align-sele{
+            border:2px solid red;
+            display: flex;
+            flex-direction: row;
+            width:600px;
+            align-items: stretch;
+        }
+        .container_align-sele .a{
+            width:180px;
+            background-color: beige;
+            font-size: 12px;;
+            align-self: flex-start;
+        }
+        /*单独规定该元素为居中*/
+        .container_align-sele .b{
+            width:180px;
+            background-color: aqua;
+            font-size: 24px;
+            align-self: center;
+        }
+        .container_align-sele .c{
+            width:180px;
+            background-color: coral;
+            font-size: 36px;;
+        }
+    </style>
+</head>
+<body>
+<p> align-items: flex-start;子元素上对齐</p>
+<div class="container">
+    <div class="a">我是文字A</div>
+    <div class="b">我是文字B</div>
+    <div class="c">我是文字C</div>
+</div>
+
+<p> align-items: flex-end;子元素下对齐</p>
+<div class="container_flex-end">
+    <div class="a">我是文字A</div>
+    <div class="b">我是文字B</div>
+    <div class="c">我是文字C</div>
+</div>
+
+<p> align-items: center;子元素居中对齐</p>
+<div class="container_center">
+    <div class="a">我是文字A</div>
+    <div class="b">我是文字B</div>
+    <div class="c">我是文字C</div>
+</div>
+
+<p> align-items: baseline;子元素文字变下基准线对齐</p>
+<div class="container_baseline">
+    <div class="a">我是文字A</div>
+    <div class="b">我是文字B</div>
+    <div class="c">我是文字C</div>
+</div>
+<p> align-items: stretch;子元素文字变上基准线对齐</p>
+<div class="container_stretch">
+    <div class="a">我是文字A</div>
+    <div class="b">我是文字B</div>
+    <div class="c">我是文字C</div>
+</div>
+<p> align-sele: flex-end;单独定义子元素对齐方式</p>
+<div class="container_align-sele">
+    <div class="a">我是文字A</div>
+    <div class="b">我是单独定义B</div>
+    <div class="c">我是文字C</div>
+</div>
+</body>
+</html>

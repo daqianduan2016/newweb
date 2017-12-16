@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex宽高度自适应</title>
+    <style>
+        .container{
+            display: flex;
+            width:500px;
+            height:500px;
+            border:1px solid red;
+            float: left;
+            /*flex-direction: column;*/
+        }
+        .container .left{
+            background-color: red;
+            flex:1;
+        }
+        .container .content{
+            background-color: blue;
+            flex:2;
+        }
+        .container .right{
+            background-color: pink;
+            flex:1;
+        }
+        .container_right{
+            display: flex;
+            width:500px;
+            height:500px;
+            border:1px solid red;
+            float: left;
+            flex-direction: column;
+            margin-left: 20px;
+        }
+        .container_right .left{
+            background-color: red;
+            flex:1;
+        }
+        .container_right .content{
+            background-color: blue;
+            flex:2;
+        }
+        .container_right .right{
+            background-color: pink;
+            flex:1;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left">111111</div>
+    <div class="content">111111</div>
+    <div class="right">111111</div>
+</div>
+<div class="container_right">
+    <div class="left">111111</div>
+    <div class="content">111111</div>
+    <div class="right">111111</div>
+</div>
+</body>
+</html>

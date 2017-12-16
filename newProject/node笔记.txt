@@ -1,0 +1,142 @@
+module.exports.goods=
+module.exports 匿名输出   两者区别？？？
+
+
+//带账号密码的连接
+//mongoose.connect('mongodb://root:123456@127.0.0.1:27017/dumall');
+
+
+node设定一级路由在app.js里面
+//这里定义的是一级路由
+app.use('/', index);
+app.use('/users', users);
+app.use('/goods', goods);
+
+术语  加载模型表
+var Goods = require('../models/goods');//加载模型表
+
+
+/*******************/
+查  <查找条件，回调函数>  //没有查找条件，写{}
+User.find({userId:userId}, function (err,userDoc) {//错误，返回的文档
+    if(err){
+          res.json({
+            status:'1',
+            msg:err.message
+          });
+      }else{
+          res.json({
+              status:'0',
+              msg:'',
+              result:{
+                  count:doc.length,
+                  list:doc
+              }
+          });
+      }
+})
+
+改   第一个参数是where条件，第二个参数是怎么修改，第三个参数是回调函数
+User.update({"userId":userId,"cartList.productId":productId},{
+    "cartList.$.productNum":productNum,
+    //更新子文档的写法，由于具体要更新哪一条子文档需要根据id查询，所以用$占位
+    //carList[index],这里的index是根据productId查询出来的
+    "cartList.$.checked":checked,
+  }, function (err,doc) {
+      //...
+  }
+另一种修改的方式，购物车的全选和取消全选
+//全选取消全选，这个需要对user.carList里面的所有item进行批量操作，
+//这里没有使用update这个，而是这里直接改用user.save进行修改
+router.post("/editCheckAll", function (req,res,next) {
+
+删除也用改的api
+User.update({
+    userId:userId
+  },{
+    $pull:{
+      'cartList':{
+        'productId':productId
+      }
+    }
+  }, function (err,doc) {
+    if(err){}
+    //...
+  }
+})
+    
+增   调用查的方法，第2个参数是查询结果对象，对这个数组进行push之类的操作，再save
+User.findOne({userId:userId}, function (err,userDoc) {
+    //...
+    userDoc.save(function (err2,doc2) {
+        //...
+    }
+}
+
+
+
+let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
+goodsModel.sort({'salePrice':sort});//升序降序,1升序-1降序,mongoDB的每个条件都是一个object{}
+/*******************************/
+
+通过操作模型表达到对数据库的操作
+let goodsModel = Goods.find(params).skip(skip).limit(pageSize);
+
+*这里定义的叫Good，默认会和数据库中的goods表（带s）进行关联
+module.exports = mongoose.model('Good',produtSchema);
+或者这么写，在第3个参数中指定关联的表
+module.exports = mongoose.model('Good',produtSchema,'goods');
+
+
+req.param/get取参
+req.body/post取参
+
+res.json()输出json
+res.end()输出字符串
+
+
+/*  session和cookie的用法   */
+res.cookie("userName",doc.userName,{
+                path:'/',
+                maxAge:1000*60*60
+              });
+req.session.user = doc
+session有个坑没讲 10-1登录功能 17:14
+要用session需要express-sission插件
+
+/***********模拟数据  在build/dev-server.js里修改**********/
+
+var app = express()
+
+var goodsData = require('../mock/goods.json')
+var router = express.Router()
+router.get("/goods", function (req,res) {
+  res.json(goodsData)
+})
+app.use(router)
+
+/***********模拟数据  在build/dev-server.js里修改**********/
+
+
+/***********代理配置  在config/index.js里修改  axios不支持跨域**********/
+//只适用于开发模式，开发完后要和服务器代码部署到一起
+
+proxyTable: {
+    '/goods':{
+        target:'http://localhost:3000'
+    },
+    '/goods/*':{
+    target:'http://localhost:3000'
+    },
+    '/users/*':{
+    target:'http://localhost:3000'
+    }
+}
+
+/***********代理配置  在config/index.js里修改**********/
+
+
+
+
+
+

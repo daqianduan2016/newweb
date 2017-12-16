@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>justify-content子元素横向对齐方式</title>
+    <style>
+        /*justify-content: flex-start; 所有子元素居左*/
+        .container_flex-start{
+            display: flex;
+            flex-direction: row;
+            border:2px solid red;
+            flex-wrap: nowrap;
+            width:700px;
+            height:50px;
+            justify-content: flex-start;
+        }
+        .container_flex-start .a{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: pink;
+        }
+        .container_flex-start .b{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: aqua;
+        }
+        .container_flex-start .c{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: beige;
+        }
+        /*justify-content: flex-end;所有子元素居右*/
+        .container_flex-end{
+            display: flex;
+            flex-direction: row;
+            border:2px solid red;
+            flex-wrap: nowrap;
+            width:700px;
+            height:50px;
+            justify-content: flex-end;
+        }
+        .container_flex-end .a{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: pink;
+        }
+        .container_flex-end .b{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: aqua;
+        }
+        .container_flex-end .c{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: beige;
+        }
+        /*justify-content: center;所有子元素居中*/
+        .container_center{
+            display: flex;
+            flex-direction: row;
+            border:2px solid red;
+            flex-wrap: nowrap;
+            width:700px;
+            height:50px;
+            justify-content: center;
+        }
+        .container_center .a{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: pink;
+        }
+        .container_center .b{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: aqua;
+        }
+        .container_center .c{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: beige;
+        }
+        /*space-between;边距平均分配给子元素*/
+        .space-between{
+            display: flex;
+            flex-direction: row;
+            border:2px solid red;
+            flex-wrap: nowrap;
+            width:700px;
+            height:50px;
+            justify-content: space-between;
+        }
+        .space-between .a{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: pink;
+        }
+        .space-between .b{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: aqua;
+        }
+        .space-between .c{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: beige;
+        }
+        /*space-around;边距平均分配给子元素*/
+        .space-around{
+            display: flex;
+            flex-direction: row;
+            border:2px solid red;
+            flex-wrap: nowrap;
+            width:700px;
+            height:50px;
+            justify-content: space-around;
+        }
+        .space-around .a{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: pink;
+        }
+        .space-around .b{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: aqua;
+        }
+        .space-around .c{
+            box-sizing: border-box;
+            width:200px;
+            border:1px solid blue;
+            background-color: beige;
+        }
+    </style>
+</head>
+<body>
+<p>flex-start</p>
+<div class="container_flex-start">
+    <div class="a">我是A</div>
+    <div class="b">我是B</div>
+    <div class="c">我是C</div>
+</div>
+<p>flex-end</p>
+<div class="container_flex-end">
+    <div class="a">我是A</div>
+    <div class="b">我是B</div>
+    <div class="c">我是C</div>
+</div>
+<p>center</p>
+<div class="container_center">
+    <div class="a">我是A</div>
+    <div class="b">我是B</div>
+    <div class="c">我是C</div>
+</div>
+<p>space-between</p>
+<div class="space-between">
+    <div class="a">我是A</div>
+    <div class="b">我是B</div>
+    <div class="c">我是C</div>
+</div>
+<p>space-around</p>
+<div class="space-around">
+    <div class="a">我是A</div>
+    <div class="b">我是B</div>
+    <div class="c">我是C</div>
+</div>
+</body>
+</html>

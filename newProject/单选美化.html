@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="box-6">
+    
+        <label>性别</label>
+        <a href="#" name="male" id="sex-1" class="sex-checked-fouse">男</a>
+        <a href="#" name="femail" id="sex-2" class="sex-nocheck">女</a>
+    </div>
+    <div id="box-8">
+        <label>兴趣爱好</label>
+        <a href="javascript:;" id="hobby-1" class="hobby-nocheck">运动</a>
+        <a href="#" id="hobby-2" class="hobby-nocheck">科学</a>
+        <a href="#" id="hobby-3" class="hobby-nocheck">读书</a>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        var i = 0;
+        var obj;
+        /*性别*/
+        $("#sex-1").click(function() {/*获取性别男选择框*/
+            if($("#sex-2").has("sex-checked-fouse")){/*如果女被选中*/
+                $("#sex-2").removeClass("sex-checked-fouse").addClass("sex-nocheck");/*移除女焦点样式（焦点样式就是选中图片）。并且添加未选中样式（就是未选中图片）*/
+                $("#sex-1").removeClass("sex-nocheck").addClass("sex-checked-fouse");/*移除男未选中样式，添加焦点样式*/
+            }
+            })
+        $("#sex-2").click(function() {/*获取性别女选择框*/
+            if($("#sex-1").has("sex-checked-fouse")){/*如果男被选中*/
+                $("#sex-1").removeClass("sex-checked-fouse").addClass("sex-nocheck");/*与上同理*/
+                $("#sex-2").removeClass("sex-nocheck").addClass("sex-checked-fouse");
+            }
+        })
+
+        /*兴趣*/
+        $("#hobby-1,#hobby-2,#hobby-3").click(function() {
+            hobby(this);/*调用hobby方法并传参*/
+        })
+        function hobby(obj) {
+            // 这是控制兴趣选择框的方法hobby
+            var _this = obj;/*获取元素并赋值*/
+            if($(_this).hasClass("hobby-nocheck")){
+                $(_this).removeClass("hobby-nocheck").addClass("hobby-checked-fouse");
+            }else {
+                $(_this).removeClass("hobby-checked-fouse").addClass("hobby-nocheck");
+            }
+        }
+　　 })
+
+</script>
+</html>

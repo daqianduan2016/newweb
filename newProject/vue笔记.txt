@@ -1,0 +1,152 @@
+ ???.sync
+ <i-input type="text" :value.sync="formInline.user" placeholder="Username">
+     <Icon type="ios-person-outline" slot="prepend"></Icon>
+</i-input>
+ 
+ var param = {
+                  page:this.page,
+                  pageSize:this.pageSize,
+                  sort:this.sortFlag?1:-1,
+                  priceLevel:this.priceChecked
+              };
+              this.loading = true;
+              axios.get("/goods/list",{
+                params:param  //注意get请求这里要写一个params,post不用加
+              }).then((response)=>{
+                  
+              }
+
+
+
+vue-infinite-scroll 滚动加载插件
+在main.js里面引入
+
+
+登录/未登录  的显示通过nickname控制
+<span class="navbar-link" v-text="nickName" v-if="nickName"></span>
+<a href="javascript:void(0)" class="navbar-link" @click="loginModalFlag=true" v-if="!nickName">Login</a>
+<a href="javascript:void(0)" class="navbar-link" @click="logOut" v-else>Logout</a>
+
+加入购物车的node代码，用户名是直接固定写死的，以后需要配合vuex动态获取
+视频10:14
+
+
+vue-cli怎么通过source-map调bug????
+list数组里面删除元素  forEach  map????
+
+prop传递过来的值不要直接在子组件里面改，父组件写一个
+修改的事件，<modal v-bind:mdShow="mdShow" v-on:close="closeModal">
+子组件里面触发这个事件this.$emit('事件名,如上面的close')
+
+暂时理解为
+create 数据初始化完成,不涉及dom操作的代码都可以写在这里，比如根据data里面数据计算另一个数据，比如计算总页数
+mouted 组件初始化完成,修改数据会产生dom操作的代码，要写在这里
+
+computed和watch
+computed是一个数据的改变依赖多个数据
+watch是一个数据改变会影响多个数据,拿到的数据要往DOM里面填充的
+1.beforeCreate
+
+
+1.beforeCreate：此阶段为实例初始化之后，此时的数据观察和事件配置都还没有准备好，而此时的实例中的data和el还是underfined状态，不可用的
+2.created： beforeCreate之后紧接着的钩子就是创建完毕created，此时我们能读取到data的值，但是DOM还没有生成，所以属性el还是不存在的。
+3.beforeMount：此时的$el成功关联到我们指定的DOM节点<div id="app">{{name}}</div>,但此时{{}}里边的name还没有呗成功地渲染成我们DATA中的数据。
+4.mounted：挂载完毕阶段，到了这个阶段数据就会被成功渲染出来。
+5.beforeUpdate：当修改Vue实例的data时，Vue就会自动帮我们更新渲染视图，在这个过程中，Vue提供了beforeUpdate的钩子给我们，在检测到我们要修改数据的时候，更新渲染视图之前就会触发钩子beforeUpdate。html片段代码我们加上ref属性，用于获取DOM元素。
+　　beforeUpdate(){
+
+　　　　let name = this.$refs.app.innerHTML;
+
+　　}
+
+　　而在此阶段，视图并未重新渲染更新。
+6.updated：此阶段为更新渲染视图之后，此时再读取视图上的内容，已经是最新的内容。
+　　updated(){
+　　　　let name = this.$refs.app.innerHTML;
+　　},
+7.beforeDestroy：调用实例的destroy()方法可以销毁当前的组件，在销毁之前，会触发beforeDestroy钩子。
+8.destroyed：成功销毁之后，会触发destroyed钩子，此时该实例与其他实例的关联已经被清除，它与视图之间也被解绑，此时再修改name的值，试图不在更新，说明实例成功被销毁了。
+
+
+过滤器
+filters:{
+          currency:currency
+          //过滤器currency ：function(){...}
+          //这里导出的currency刚好是一个函数
+        },
+全局过滤器
+Vue.filter("currency",currency);
+
+具名导出和匿名导出
+//这是一个具名的导出,接收的时候也要带上名字接收   对象解构赋值接收
+//import {currency} from './util/currency'
+export function currency (value, currency, decimals) {//...}
+
+ @click="checkIndex=index;selectedAddrId=item.addressId"
+ 这里是可以写以;分隔开的语句的，但不能写if判断，{{里面只能写表达式}}
+
+页面跳转
+1.to="/cart"  
+  1.1 query传参?name=xxx&age=xxx 
+  子路由中通过 this.$route.query.age 来显示传递过来的参数  
+  <router-link class="btn btn--m btn--red" 
+v-bind:to="{path:'orderConfirm',query:{'addressId':selectedAddrId}}">Next</router-link>
+  1.2 params传参  :to="{ name:'game1', params: {num: 123} }"
+  在子路由中，通过 this.$route.params.参数名  来接受传递过来的值
+
+2.js的方式跳转
+this.$router.push({path:"/address"});
+this.$route.query  这里用的是$route
+
+:to="{ name:'game1', params: {num: 123} }"
+
+别名
+@  wepack.base.conf.js
+resolve: {
+  extensions: ['.js', '.vue', '.json'],
+  alias: {
+    'vue$': 'vue/dist/vue.esm.js',
+    '@': resolve('src')
+  }
+},
+
+
+$.each(obj,function)
+list.each(function)
+list.forEach(function)
+list.filter(function)
+
+
+
+更改state里面的值必须用mutation提交
+mutation:{
+  fn(state){}  //state是当前vuex实例里面的state
+}
+取state里面的值可以写在computed里面
+atciontion提交的是mutation，不能直接修改state，可以提交异步
+action:{
+  fn(context){context.commit('mutationName')}
+}
+dispath提交action  this.$store.dispath('name')
+commit提交mutation this.$store.commit('name')
+
+双向数据绑定原理Object.defineProperty
+var userInfo = {};
+Object.defineProperty(userInfo, "nickName", {
+    get: function(){
+        return document.getElementById('nickName').innerHTML;
+    },
+    set: function(nick){
+        document.getElementById('nickName').innerHTML = nick;
+    }
+});
+Object.defineProperty(userInfo, "introduce", {
+    get: function(){
+        return document.getElementById('introduce').innerHTML;
+    },
+    set: function(introduce){
+        document.getElementById('introduce').innerHTML = introduce;
+    }
+})
+
+

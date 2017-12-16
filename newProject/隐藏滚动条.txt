@@ -1,0 +1,99 @@
+ /*chrome下能隐藏滚动条*/
+        ::-webkit-scrollbar{
+            display: none;
+        }
+
+
+/* scrollIntoView */
+<input element>.scrollIntoView()
+
+
+// 让类数组元素调用forEach函数   小球抛物线
+var allDishImg = document.querySelectorAll(".dish-img");
+[].slice.call(allDishImg).forEach(function (item) {
+    item.style.backgroundColor = '#' + Math.random().toString(16).slice(2, 8);
+});
+随机颜色  Math.random().toString(16).slice(2, 8);
+类数组转数组 [].slice.call(document.querySelectorAll(".dish-img"))
+
+移除一个css，类似jq的removeClass，多个class的时候可以保证只移除指定的
+navLi[activeIndex-1].className = navLi[activeIndex-1].className.replace(/active/g, '');
+
+这里的+可以把string转化为num
+scrollAnimation(+activeIndex, +curIndex, 1000)
+
+//滚动条的缓冲运动 <起始元素，目标元素，时间>
+function scrollAnimation(from, to, time) {
+    var fromOffsetTop = document.querySelector('#category' + from).offsetTop,
+        toOffsetTop = document.querySelector('#category' + to).offsetTop,
+        frameTime = 40,//时间间隔
+        speed = (toOffsetTop - fromOffsetTop) / (time / frameTime),//速度
+        temp = fromOffsetTop;//起始滚动条的位置
+    var timeout = setInterval(function () {
+        sectionUl.scrollTop = temp;//temp的变化是由于下面的+=
+        (((temp += speed) - toOffsetTop) / speed) > 0 && clearTimeout(timeout);
+    }, frameTime)
+}
+
+//生成a-b的随机数
+function(a, b) {
+    return Math.floor(Math.random() * (b-a+1) +a );
+},
+
+//乱序1  生成乱序随机数组
+function listSort(num){
+    num=num||10;
+    var list=[],arr=[];
+    for(var i=0;i<num;i++){
+        arr.push(i)
+    }
+    for(var i=0;i<num;i++){
+        list.push( arr.splice(Math.floor(Math.random()*arr.length) ,1)[0]) 
+    }
+    return list;
+}
+
+//乱序2 打乱一个数组1
+var list=[];arr=[1,2,3,4,5,6];
+var leng=arr.length;
+for(var i=0;i<leng;i++){
+    list.push( arr.splice(Math.floor(Math.random()*arr.length) ,1)[0]) 
+}
+console.log(list)
+//打乱一个数组2  这种随机不够彻底，原理是挨个进行比较是否交换位置
+var arr = [4,1,67,12,45,121,3];
+arr.sort(function() {
+     return (0.5-Math.random());
+})
+
+
+//arguments.callee  指函数本身，可消除内部代码与函数名的耦合，也可给函数添加自定义属性，用于挂载变量
+function factorial(num){    //阶乘函数
+   var arguments.callee[0]=1;//挂载变量
+   if (num <=1) {         
+      return 1;     
+   } else {         
+   return num * factorial(num-1)
+   //可改为下面的写法,消除了耦合
+   //return num * arguments.callee(num-1)    
+   } 
+}
+
+<input type="text" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}">
+跳转手机页面 似乎有些古老
+<meta name="mobile-agent" content="format=html5;url=http://forbag.inrn.net/kh1m.aspx">
+
+var userAgentInfo = navigator.userAgent;
+if  (userAgentInfo.indexOf("Android") > 0 || userAgentInfo.indexOf("iPhone") > 0 || userAgentInfo.indexOf("SymbianOS") > 0 || userAgentInfo.indexOf("Windows Phone") > 0 || userAgentInfo.indexOf("iPod") > 0 || userAgentInfo.indexOf("iPad") > 0) 
+{
+    window.location.href = "http://forbag.inrn.net/kh1m.aspx";
+}else {
+
+}
+
+
+1mhPejwO
+
+
+mongod --dbpath c:\MongoDB\data4 --logpath c:\MongoDB\log\mongo.log --journal --storageEngine=mmapv1
+
